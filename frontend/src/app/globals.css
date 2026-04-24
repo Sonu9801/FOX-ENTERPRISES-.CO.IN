@@ -1,0 +1,262 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Space Grotesk";
+    --font-body: "Satoshi";
+    --font-mono: "JetBrains Mono";
+    --radius: 0.625rem;
+
+    /* Fox Enterprises — Premium Light OKLCH Palette */
+    --background: 0.98 0.005 250;
+    --foreground: 0.12 0.015 258;
+    --card: 1.0 0 0;
+    --card-foreground: 0.12 0.015 258;
+    --popover: 0.99 0.004 250;
+    --popover-foreground: 0.12 0.015 258;
+
+    --primary: 0.52 0.22 250;
+    --primary-foreground: 0.99 0.003 250;
+
+    --secondary: 0.94 0.012 250;
+    --secondary-foreground: 0.25 0.02 258;
+
+    --muted: 0.95 0.008 250;
+    --muted-foreground: 0.45 0.012 258;
+
+    --accent: 0.55 0.18 165;
+    --accent-foreground: 0.99 0.003 250;
+
+    --destructive: 0.55 0.2 25;
+    --destructive-foreground: 0.99 0.001 260;
+
+    --border: 0.88 0.012 250;
+    --input: 0.92 0.01 250;
+    --ring: 0.52 0.22 250;
+
+    --chart-1: 0.52 0.22 250;
+    --chart-2: 0.55 0.18 165;
+    --chart-3: 0.65 0.2 30;
+    --chart-4: 0.58 0.18 290;
+    --chart-5: 0.62 0.18 50;
+
+    --sidebar: 0.96 0.006 250;
+    --sidebar-foreground: 0.15 0.012 258;
+    --sidebar-primary: 0.52 0.22 250;
+    --sidebar-primary-foreground: 0.99 0.003 250;
+    --sidebar-accent: 0.9 0.01 250;
+    --sidebar-accent-foreground: 0.2 0.015 258;
+    --sidebar-border: 0.88 0.012 250;
+    --sidebar-ring: 0.52 0.22 250;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-color: oklch(0.98 0.005 250);
+  }
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/assets/fonts/Satoshi.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glow-primary {
+    box-shadow: 0 4px 20px oklch(0.52 0.22 250 / 0.22), 0 2px 8px
+      oklch(0.52 0.22 250 / 0.12);
+  }
+
+  .glow-primary-hover:hover {
+    box-shadow: 0 6px 28px oklch(0.52 0.22 250 / 0.3), 0 3px 12px
+      oklch(0.52 0.22 250 / 0.18);
+  }
+
+  .glow-accent {
+    box-shadow: 0 4px 16px oklch(0.55 0.18 165 / 0.2);
+  }
+
+  .glow-accent-hover:hover {
+    box-shadow: 0 6px 22px oklch(0.55 0.18 165 / 0.28);
+  }
+
+  /* Light glassmorphism — crisp white panels */
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 24px rgba(0, 0, 80, 0.06);
+  }
+
+  .glassmorphism-strong {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px) saturate(1.6);
+    -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 32px rgba(0, 0, 80, 0.08);
+  }
+
+  .metallic-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.52 0.22 250),
+      oklch(0.55 0.18 165)
+    );
+  }
+
+  .text-gradient-primary {
+    background: linear-gradient(to right, #0070f3, #00a878);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* For use on dark/gradient backgrounds */
+  .text-gradient-white {
+    background: linear-gradient(
+      135deg,
+      oklch(0.99 0.003 250),
+      oklch(0.94 0.012 250)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Hero grid — very subtle light blue lines */
+  .hero-grid {
+    background-image: linear-gradient(
+        oklch(0.52 0.22 250 / 0.04) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, oklch(0.52 0.22 250 / 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .section-divider {
+    border-top: 1px solid oklch(0.88 0.012 250 / 0.5);
+  }
+
+  .card-hover {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s
+      cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(0, 0, 60, 0.12), 0 4px 16px
+      rgba(0, 0, 60, 0.08);
+  }
+
+  /* CTA gradient background — strong electric blue → teal */
+  .cta-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.48 0.24 250) 0%,
+      oklch(0.45 0.2 220) 40%,
+      oklch(0.5 0.2 165) 100%
+    );
+  }
+
+  /* Soft shadow utilities for light mode */
+  .shadow-soft {
+    box-shadow: 0 2px 8px rgba(0, 0, 60, 0.06);
+  }
+
+  .shadow-medium {
+    box-shadow: 0 4px 16px rgba(0, 0, 60, 0.08);
+  }
+
+  .shadow-large {
+    box-shadow: 0 8px 32px rgba(0, 0, 60, 0.1);
+  }
+
+  .shadow-elevation {
+    box-shadow: 0 16px 48px rgba(0, 0, 60, 0.12);
+  }
+
+  /* ── Infinite horizontal carousel ─────────────────────────────── */
+  .carousel-track {
+    animation: carousel-scroll 40s linear infinite;
+  }
+
+  .carousel-track:hover {
+    animation-play-state: paused;
+  }
+
+  .carousel-card {
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s
+      cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .carousel-card:hover {
+    transform: scale(1.03) translateY(-4px);
+    box-shadow: 0 20px 48px rgba(0, 0, 80, 0.18);
+    z-index: 10;
+  }
+
+  /* ── Marquee auto-scroll for ProductCarousel ──────────────────── */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  /* Hide scrollbar but keep scrollability */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Navbar scroll state */
+  .navbar-scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px) saturate(1.6);
+    -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    box-shadow: 0 1px 0 rgba(0, 0, 60, 0.06), 0 4px 16px rgba(0, 0, 60, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 60, 0.05);
+  }
+}
